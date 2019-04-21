@@ -5,17 +5,13 @@
 
 - name: Creating the virtualenv
   become: true
-  shell: virtualenv env
+  command: virtualenv env -p python3.6
   args:
     chdir: /home/{{prname}}
 
 - name: Installing python packages
   become: true
   pip: virtualenv=/home/{{prname}}/env requirements=/home/{{prname}}/{{prname}}/requirements.txt
-
-- name: Installing psycopg2 packages
-  become: true
-  pip: virtualenv=/home/{{prname}}/env name="psycopg2"
 
 - name: Installing uwsgi packages
   become: true

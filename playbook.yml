@@ -4,7 +4,7 @@
     - dbuser: 'mariadb'
     - dbpwd: 'mariadb'
     - prname: 'mineralDB'
-    - repo: git@github.com:sixtycycles/mineralDB.git
+    - repo: https://github.com/sixtycycles/mineralDBSite.git
 
 
   tasks:
