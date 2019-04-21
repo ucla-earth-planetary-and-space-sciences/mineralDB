@@ -1,0 +1,22 @@
+---
+
+
+- name: Create Database.
+  become: true
+  mysql_db:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: mineralDB
+    state: present
+  tags:
+    - database
+    - create
+
+- name: Create Database User
+  become: true
+  mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: mariadb
+    password: mariadb
+    priv: 'mineralDB.*:ALL'
+    state: present
+  tags: database

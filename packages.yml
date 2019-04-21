@@ -1,7 +1,12 @@
 ---
 - name: Updating packages
   become: true
-  action: apt update_cache=yes
+  apt:
+    update_cache: true
+    autoclean: true
+    autoremove: true
+    cache_valid_time: 26000
+
 - name: Installing packages
   become: true
   action: apt pkg={{item}} state=latest
@@ -15,7 +20,8 @@
     - supervisor
     - libjpeg8-dev
     - libpq-dev
-    - python-mysqldb
+    - python3-pymysql
+    - python3-mysqldb
     - build-essential
     - python3-dev
     - vim
