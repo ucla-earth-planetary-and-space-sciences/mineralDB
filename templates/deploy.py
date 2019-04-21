@@ -8,8 +8,8 @@ MEDIA_ROOT = '/home/{{prname}}/webstatic/media'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': '{{prname}}',
-        'USER': '{{prname}}',
+        'NAME': '{{dbuser}}',
+        'USER': '{{dbuser}}',
         'PASSWORD': '{{prname}}',
         'HOST': '',
         'PORT': '',

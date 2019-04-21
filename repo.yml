@@ -1,17 +1,17 @@
 ---
 - name: Downloading the project
   become: true
-  git: repo={{ repo }} dest=/home/{{prname}}/{{ prname }} accept_hostkey=True
+  git: repo={{ repo }} dest=/home/{{prname}}/{{site}}/ accept_hostkey=True
 
 - name: Creating the virtualenv
   become: true
   command: virtualenv env -p python3.6
   args:
-    chdir: /home/{{prname}}
+    chdir: /home/{{prname}}/{{site}}
 
 - name: Installing python packages
   become: true
-  pip: virtualenv=/home/{{prname}}/env requirements=/home/{{prname}}/{{prname}}/requirements.txt
+  pip: virtualenv=/home/{{prname}}/env requirements=/home/{{prname}}/mineralDBSite/requirements.txt
 
 - name: Installing uwsgi packages
   become: true
@@ -23,21 +23,21 @@
 #huh?
 - name: Creating deploy settings
   become: true
-  template: src=templates/deploy.py dest=/home/{{prname}}/{{prname}}/ owner="{{prname}}" mode=0644
+  template: src=templates/deploy.py dest=/home/{{prname}} owner="{{prname}}" mode=0644
 
 - name: Collect static
   become: true
-  django_manage: command=collectstatic
-  args:
-    app_path: /home/{{prname}}/{{prname}}/{{prname}}
-    virtualenv: /home/{{prname}}/env
-    settings: "{{prname}}.deploy"
+  django_manage:
+      command: collectstatic
+      app_path: /home/{{prname}}/mineralDBSite/
+      virtualenv: /home/{{prname}}/env
+      settings: "{{prname}}.deploy"
 
 - name: Syncdb
   become: true
   django_manage: command=syncdb
   args:
-    app_path: /home/{{prname}}/{{prname}}/{{prname}}
+    app_path: /home/{{prname}}/mineralDBSite
     virtualenv: /home/{{prname}}/env
     settings: "{{prname}}.deploy"
 
@@ -45,7 +45,7 @@
   become: true
   shell: /home/{{prname}}/env/bin/python manage.py migrate --no-initial-data --settings={{prname}}.deploy
   args:
-    chdir: /home/{{prname}}/{{prname}}/{{prname}}
+    chdir: /home/{{prname}}/
 
 - name: Creating uwsgi settings
   become: true

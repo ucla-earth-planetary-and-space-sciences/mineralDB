@@ -1,7 +1,7 @@
 ---
 - name: Creating default user
   become: true
-  user: name={{ prname }} shell=/bin/bash
+  user: name={{ dbuser }} shell=/bin/bash
 
 - name: Copying ssh keys
   become: true

@@ -1,16 +1,16 @@
 ---
 - hosts: all
   vars:
-    - dbuser: 'mariadb'
-    - dbpwd: 'mariadb'
+    - dbuser: 'mineralDB'
+    - dbpwd: 'mineralDB'
     - prname: 'mineralDB'
     - repo: https://github.com/sixtycycles/mineralDBSite.git
-
+    - site: 'mineralDBSite'
 
   tasks:
     - include: packages.yml
-    - include: mysql.yml
     - include: user.yml
+    - include: mysql.yml
     - include: repo.yml
     - include: supervisor.yml
     - include: nginx.yml
