@@ -5,7 +5,7 @@
   become: true
   mysql_db:
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    name: mineralDB
+    name: '{{prname}}'
     state: present
   tags:
     - database
@@ -15,8 +15,8 @@
   become: true
   mysql_user:
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    name: mariadb
-    password: mariadb
-    priv: 'mineralDB.*:ALL'
+    name: '{{dbuser}}'
+    password: '{{dbpwd}}'
+    priv: '{{prname}}.*:ALL'
     state: present
   tags: database

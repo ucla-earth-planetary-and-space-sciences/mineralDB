@@ -20,10 +20,10 @@
 - name: Creates webstatic directory
   become: true
   file: path=/home/{{prname}}/webstatic state=directory
-
+#huh?
 - name: Creating deploy settings
   become: true
-  template: src=templates/deploy.py dest=/home/{{prname}}/{{prname}}/{{prname}}/{{prname}} owner="{{prname}}" mode=0644
+  template: src=templates/deploy.py dest=/home/{{prname}}/{{prname}}/ owner="{{prname}}" mode=0644
 
 - name: Collect static
   become: true
