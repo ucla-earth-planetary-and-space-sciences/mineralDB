@@ -1,0 +1,21 @@
+---
+- name: Updating packages
+  become: true
+  action: apt update_cache=yes
+- name: Installing packages
+  become: true
+  action: apt pkg={{item}} state=latest
+  with_items:
+    - nginx
+    - git
+    - uwsgi
+    - uwsgi-plugin-python3
+    - virtualenvwrapper
+    - mariadb-server
+    - supervisor
+    - libjpeg8-dev
+    - libpq-dev
+    - python-mysqldb
+    - build-essential
+    - python3-dev
+    - vim

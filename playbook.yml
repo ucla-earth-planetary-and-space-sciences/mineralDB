@@ -1,0 +1,16 @@
+---
+- hosts: all
+  vars:
+    - dbuser: mariadb
+    - dbpwd: mariadb
+    - prname: mineralDB
+    - repo: git@github.com:sixtycycles/mineralDB.git
+    - appport: 4086
+
+  tasks:
+    - include: packages.yml
+    - include: postgres.yml
+    - include: user.yml
+    - include: repo.yml
+    - include: supervisor.yml
+    - include: nginx.yml
