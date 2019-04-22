@@ -1,9 +1,0 @@
-	<ul class="entries-side">
-	{% for post in recent_stories%}
-		<li>
-
-{#			<a href="{%url 'entry-detail' post.slug post.id %}">{{post.title}}</a>#}
-			<a href="{%url 'entry-detail' post.slug post.id%}"> {{post.title}}</a>
-		</li>
-	{% endfor %}
-	</ul>
