@@ -3,15 +3,13 @@
   become: true
   git: repo={{ repo }} dest=/home/{{prname}}/{{site}}/ accept_hostkey=True
 
-- name: Creating the virtualenv
-  become: true
-  command: virtualenv env -p python3.6
-  args:
-    chdir: /home/{{prname}}/{{site}}
-
 - name: Installing python packages
   become: true
-  pip: virtualenv=/home/{{prname}}/env requirements=/home/{{prname}}/mineralDBSite/requirements.txt
+  pip:
+      virtualenv: '/home/{{prname}}/env'
+      requirements: '/home/{{prname}}/{{site}}/requirements.txt'
+      virtualenv_python: /usr/bin/python3.6
+      virtualenv_site_packages: yes
 
 - name: Installing uwsgi packages
   become: true
@@ -20,32 +18,33 @@
 - name: Creates webstatic directory
   become: true
   file: path=/home/{{prname}}/webstatic state=directory
-#huh?
+
 - name: Creating deploy settings
   become: true
   template: src=templates/deploy.py dest=/home/{{prname}} owner="{{prname}}" mode=0644
 
-- name: Collect static
-  become: true
-  django_manage:
-      command: collectstatic
-      app_path: /home/{{prname}}/mineralDBSite/
-      virtualenv: /home/{{prname}}/env
-      settings: "{{prname}}.deploy"
-
-- name: Syncdb
-  become: true
-  django_manage: command=syncdb
-  args:
-    app_path: /home/{{prname}}/mineralDBSite
-    virtualenv: /home/{{prname}}/env
-    settings: "{{prname}}.deploy"
-
-- name: Migrate
-  become: true
-  shell: /home/{{prname}}/env/bin/python manage.py migrate --no-initial-data --settings={{prname}}.deploy
-  args:
-    chdir: /home/{{prname}}/
+# - name: Collect static
+#   become: true
+#   django_manage:
+#     command: collectstatic
+#     app_path: /home/{{prname}}/{{site}}/{{site}}
+#     virtualenv: /home/{{prname}}/env
+#     pythonpath: /home/mineralDB/env/bin/python3.6
+#     settings: "{{prname}}.deploy"
+#
+# - name: Syncdb
+#   become: true
+#   django_manage:
+#     command: syncdb
+#     app_path: /home/{{prname}}/{{site}}
+#     virtualenv: /home/{{prname}}/env
+#     settings: "{{prname}}.deploy"
+#
+# - name: Migrate
+#   become: true
+#   shell: /home/{{prname}}/{{site}}/env/bin/python3 manage.py migrate --no-initial-data --settings={{prname}}.deploy
+#   args:
+#     chdir: /home/{{prname}}/
 
 - name: Creating uwsgi settings
   become: true

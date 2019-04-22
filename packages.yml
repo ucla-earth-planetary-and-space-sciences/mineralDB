@@ -20,8 +20,8 @@
     - supervisor
     - libjpeg8-dev
     - libpq-dev
+    - default-libmysqlclient-dev
     - python3-pymysql
-    - python3-mysqldb
     - build-essential
     - python3-dev
     - vim

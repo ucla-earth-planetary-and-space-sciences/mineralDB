@@ -6,6 +6,7 @@
     - prname: 'mineralDB'
     - repo: https://github.com/sixtycycles/mineralDBSite.git
     - site: 'mineralDBSite'
+    - appport: 5000
 
   tasks:
     - include: packages.yml
