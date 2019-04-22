@@ -13,6 +13,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--cpus", "1"]
   end
 
+  config.vm.synced_folder "assets/code/", "/srv/project_code/"
+
   config.vm.provision "ansible" do |ansible|
     ansible.compatibility_mode = '2.0'
     ansible.playbook = "playbook.yml"

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block Main_Web_Header_Title %}
+    {{ block.super }} | {{ research_area.name }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <a href="/research-areas/{{ research_area.name }}/">{{ research_area.name }}</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="research-area" class="content-wrapper">
+
+        <div class="page-header">
+
+
+
+            <h2>{{ research_area.name }}</h2>
+
+        </div>
+        <div class="row">
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4 hidden-xs">
+
+                <img class="img-responsive img-rounded" src="{{ research_area.image.url }}" alt="image representing{{ research_area.name }} research area">
+
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12"> <p>{{ research_area.details }}</p></div>
+
+
+        </div>
+
+        <h3>Faculty in {{ research_area.name }}</h3>
+        <table class="table table-responsive table-condensed table-striped table-bordered">
+
+            <th>Title</th>
+            <th>Position</th>
+            <th>Email Address</th>
+            {% for person in faculty_list %}
+                <tr>
+
+                    <td>
+                        <a href="{{ person.get_absolute_url }}  ">
+                            {{ person.first_name }} {{ person.last_name }}</a>
+                    </td>
+                    <td>{{ person.title }}</td>
+                    <td>{% if person.email %} <a class="email" href="mailto:{{ person.email }}">{{ person.email }} </a> {% endif %} </td>
+                </tr>
+            {% endfor %}
+        </table>
+
+
+    </div>
+
+{% endblock %}

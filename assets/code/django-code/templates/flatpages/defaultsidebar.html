@@ -1,0 +1,25 @@
+{%extends "base.html" %}
+
+{% block Main_Web_Header_Title %} {{block.super}} | {{ flatpage.title}} {% endblock%}
+
+{% block breadcrumb %}
+    {{block.super}} > {{ flatpage.title}}
+
+{% endblock%}
+
+{% block content %}
+
+
+
+    <div class="content-wrapper">
+
+    <div class="page-header"><h2>{{ flatpage.title}}</h2></div>
+        <div class="col-md-3" ><h5 style="text-align: center">To make a gift, click the Give Now button</h5>
+            <a href="https://giving.ucla.edu/Campaign/Donate.aspx?SiteNum=114" target="_blank"><img alt="" src="https://epss.ucla.edu/media/images/misc/give_now_button.png" style="width: 200px; height: 200px; margin: 15px;"></a>
+
+	</div>
+    <div class="one_col">{{ flatpage.content }}</div>
+        </div>
+
+
+{% endblock %}

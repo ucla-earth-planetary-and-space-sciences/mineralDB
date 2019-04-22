@@ -1,19 +1,19 @@
 ---
-- name: Downloading the project
-  become: true
-  git: repo={{ repo }} dest=/home/{{prname}}/{{site}}/ accept_hostkey=True
-
-- name: Installing python packages
-  become: true
-  pip:
-      virtualenv: '/home/{{prname}}/env'
-      requirements: '/home/{{prname}}/{{site}}/requirements.txt'
-      virtualenv_python: /usr/bin/python3.6
-      virtualenv_site_packages: yes
-
-- name: Installing uwsgi packages
-  become: true
-  pip: virtualenv=/home/{{prname}}/env name="uwsgi"
+# - name: Downloading the project
+#   become: true
+#   git: repo={{ repo }} dest=/home/{{prname}}/{{site}}/ accept_hostkey=True
+#
+# - name: Installing python packages
+#   become: true
+#   pip:
+#       virtualenv: '/home/{{prname}}/env'
+#       requirements: '/home/{{prname}}/{{site}}/requirements.txt'
+#       virtualenv_python: /usr/bin/python3.6
+#       virtualenv_site_packages: yes
+#
+# - name: Installing uwsgi packages
+#   become: true
+#   pip: virtualenv=/home/{{prname}}/env name="uwsgi"
 
 - name: Creates webstatic directory
   become: true

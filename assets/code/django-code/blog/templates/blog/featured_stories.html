@@ -1,0 +1,15 @@
+
+{% if featured_stories %}
+	<ul class="entries-side">
+	{% for post in featured_stories %}
+		<li>
+{#			<a href="{%url 'entry-detail' post.slug post.id %}">{{post.title}}</a>#}
+		<a href="{%url 'entry-detail' post.slug post.id %}">{{post.title}}</a>
+        </li>
+	{% endfor %}
+	</ul>
+{% else %}
+	<p>
+		Currently no stories are featured.
+	</p>
+{% endif%}

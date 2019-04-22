@@ -3,7 +3,7 @@
   vars:
     - dbuser: 'mineralDB'
     - dbpwd: 'mineralDB'
-    - prname: 'mineralDB'
+    - prname: 'myapp'
     - repo: https://github.com/sixtycycles/mineralDBSite.git
     - site: 'mineralDBSite'
     - appport: 5000

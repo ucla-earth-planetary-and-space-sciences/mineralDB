@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{%  load staticfiles %}
+{% block extra_header %}
+
+    <link rel="stylesheet" href="{% static "/main/css/bootstrap/directory.css" %}" type="text/css" />
+
+{% endblock %}
+
+{% block content %}
+<div id="directory" class="content-wrapper">
+    <div class="page-header">
+        <h1>{{object_detail.first_name}} {{object_detail.last_name}} </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+            <div class=" ">
+
+                {% if object_detail.profile_image %}
+                <img class="img-responsive" src="{{object_detail.profile_image.url}}" alt="headshot of {{ object_detail.first_name }} {{object_detail.last_name }}"/>
+            {% else %}
+                <img class="img-responsive" src="https://epss.ucla.edu/media/images/profile_pictures/default.jpg" alt="default profile image placeholder"/>
+            {% endif%}
+
+            </div>
+        </div>
+    
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-left">
+            <h1 class="no-line">{{object_detail.title}}</h1>
+            <p>
+                {% if object_detail.phone_number %}
+                {{object_detail.phone_number}}<br/>
+                {% endif %}
+
+                {%  if object_detail.email %}
+                <a href="mailto:{{object_detail.email}}">{{object_detail.email}}</a><br/>
+                {% endif %}
+
+                {{object_detail.location}}<br/>
+            </p>
+            {% if object_detail.degree_set.all %}
+            <p>
+                {% for degree in object_detail.degree_set.all %}
+                {{degree.degree_level}}&nbsp;&nbsp;{{degree.school}}, {{degree.year}}
+                {% endfor%}
+            <p>
+            {% endif %}
+        
+            {% if object_detail.website_set.all %}
+                <h3>Links</h3>
+                <p class="websites">
+                    {% for website in object_detail.website_set.all %}
+
+
+                        <a href="{{ website.website_url }}" target="_blank" data-toggle="tooltip" data-placement="top" title="{{website.website_url}}" > {{website.website_label}} </a> <br>
+
+                    {% endfor %}
+
+                </p>
+
+                {% endif %}
+
+
+
+                {% if object_detail.researcharea_set.all %}
+                    <h3 style="margin-bottom:0;">Research Areas</h3>
+                    <p class="smaller" style="margin-top:0;">
+                        {% for area in object_detail.researcharea_set.all %}
+                            <a href="{% url "research-area-detail" area.slug %}">{{ area.name }}</a><br>
+                        {% endfor %}
+                    </p>
+                {% endif %}
+
+        </div>
+
+        </div>
+    </div>
+{% endblock %}

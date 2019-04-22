@@ -1,0 +1,69 @@
+{#{% extends "directory/base-index.html" %}#}
+{##}
+{#{% block Main_Web_Header_Title %} {{block.super}} | Department Directory - Board of Advisors {% endblock%}#}
+{##}
+{#{% block breadcrumb %}#}
+{#    {{block.super}}#}
+{#    <li>EPSS Board of Advisors</li>#}
+{#{% endblock%}#}
+{##}
+{#{% block page_header %}<h2>EPSS Board of Advisors</h2>{% endblock %}#}
+{% extends "base.html" %}
+{%  load staticfiles %}
+{% block extra_header %}
+    <link rel="stylesheet" href="{% static "/main/css/bootstrap/directory.css"%}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div id="directory" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="content-wrapper">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="page-header">
+                            {% block page_header %}<h2> EPSS Board of Advisors </h2> {% endblock %}
+                        </div>
+                    </div>
+                </div>
+                {% block directory_loop %}
+                    <div class="row">
+                        {% for person in object_list %}
+                                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 directory-entry">
+                                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                                        <a href="{{ person.id }}">
+                                            {% if person.profile_image %}
+                                                <div class="img-wrapper">
+
+                                                    <img alt="headshot of {{ person.first_name }} {{ person.last_name }} thumbnail"
+                                                         class="img" src="{{ person.profile_image.url }}"/>
+                                                </div>
+                                            {% else %}
+                                                <div class="img-wrapper">
+                                                    <img alt="default image" class="img img-responsive"
+                                                         src="https://epss.ucla.edu/media/images/profile_pictures/default.jpg" alt="default directory image placeholder"/>
+                                                </div>
+                                            {% endif %}
+                                        </a>
+
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                                        <h4>
+                                            <a href="{{ person.id }}">{{ person.first_name }}{% if person.middle_name %} {{ person.middle_name }}{% endif %} {{ person.last_name }} {% if person.suffix %}{{ person.suffix }} {% endif %}</a>
+                                        </h4>
+
+                                        <p>
+                                        {{ person.title }} <br>
+
+
+                                        </p>
+                                    </div>
+                                </div>
+
+                        {% endfor %}
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

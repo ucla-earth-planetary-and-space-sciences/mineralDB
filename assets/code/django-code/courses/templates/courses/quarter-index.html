@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block Main_Web_Header_Title %} {{ block.super }} | Schedule of classes {% endblock %}
+
+{% block breadcrumb %}
+    {{ block.super }} > Course Websites
+{% endblock %}
+
+{% block page_title %}
+    <h2>Course Websites</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="content-wrapper">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h4>Current Quarter</h4>
+            </div>
+            <div class="panel-body">
+                <p style="margin-left:20px;font-size:1.286em;">
+                    {% for quarter in object_list %}
+                        {% if not quarter.is_archive %}
+                            <a href="{% url 'course-index' quarter.slug %}">
+                                {{ quarter.get_season_display }} {{ quarter.year }}
+                            </a><br>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>Inactive Quarters</h4>
+            </div>
+            <div class="panel-body">
+                <p style="margin-left:20px;font-size:1.286em;">
+                    {% for quarter in object_list %}
+                        {% if quarter.is_archive %}
+                            <a href="{% url 'course-index' quarter.slug %}">
+                                {{ quarter.get_season_display }} {{ quarter.year }}
+                            </a><br>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

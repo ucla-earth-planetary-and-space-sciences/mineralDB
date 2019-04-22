@@ -1,0 +1,70 @@
+{% extends "directory/base-index.html" %}
+
+{% block Main_Web_Header_Title %} {{ block.super }} | Department Directory - Faculty {% endblock %}
+
+{% block breadcrumb %}
+    {{ block.super }}
+    <li>Faculty</li>
+{% endblock %}
+
+{% block page_header %}<h2>Faculty</h2>{% endblock %}
+
+{% block directory_loop %}
+
+    {{ block.super }}
+    <a name="emeritus"></a>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="page-header">
+                <h2>Faculty - Emeritus</h2>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        {% for person in emeriti_list %}
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 directory-entry">
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <a href="{{ person.id }}">
+                        {% if person.profile_image %}
+                            <div class="img-wrapper">
+                                <img alt="headshot of {{ person.first_name }} {{ person.last_name }} thumbnail"
+                                     class="img-responsive" src="{{ person.thumbnail_image.url }}"/>
+                            </div>
+                        {% else %}
+                            <div class="img-wrapper">
+
+                                <img class="img-responsive"
+                                     src="https://epss.ucla.edu/media/images/profile_pictures/default.jpg"
+                                     alt="default profile image placeholder"/>
+
+                            </div>
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-6 col-xs-6">
+                    <h4>
+                        <a href="{{ person.id }}">{{ person.first_name }} {{ person.last_name }}</a>
+                    </h4>
+                    <p>
+                        {{ person.title }}<br>
+                        {% if person.email %}
+                            <span class="hidden-xs hidden-sm">Email: <a
+                                    href="mailto:{{ person.email }}">{{ person.email }}</a><br></span>
+                            <span class="hidden-xs">
+                        {% endif %}
+                        {% if person.researcharea_set.all %}
+                            Research Areas:
+                            <ul>
+				        	{% for area in person.researcharea_set.all %}
+                                <li><a href="{% url "research-area-detail" area.slug %}">{{ area.name }}</a></li>
+                            {% endfor %}
+                            </ul></span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+
+{% block Main_Web_Header_Title %} {{ block.super }} | Forms - {{ object.title|truncatewords:4 }} {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="content-wrapper">
+            {# here we check to see if any messages are in the session, like did your form get submitted>?#}
+            {% if messages %}
+                {% for message in messages %}
+
+                    {% if message.tags == 'error' %}
+                        <div class="alert alert-danger"><p> {{ message }}</p></div>
+
+                    {% endif %}
+
+                    {% if message.tags == 'success' %}
+                        <div class="alert alert-success" role="alert"><p>{{ message }}</p></div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="page-header">
+                <h2>Feedback Form</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>
+                        The Department of Earth, Planetary, and Space Sciences Faculty and Staff are committed to
+                        providing the highest level of service and support to the UCLA community and public.
+                        We encourage everyone to submit comments related to our performance or to departmental climate,
+                        and to offer suggestions as to how we might improve your experience
+                    </p>
+                    <p>
+                        Please use this form to submit anonymous (or not anonymous, should you choose) feedback.
+                    </p>
+                    <p>
+                        Thank you for your comments!
+                    </p>
+
+                    <p>
+                        <em>To preserve your anonymity, this form does not log your IP address. If you are concerned
+                            about
+                            your IP address being recorded, please consider using a public computer.
+                        </em></p>
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <form class="form" action="" method="post">
+
+                        {% csrf_token %}
+                        {% load widget_tweaks %}
+
+                        {{ form.non_field_errors }}
+                        <div class="form-group">
+                            {{ form.name.errors }}
+                            <label for="{{ form.name.id_for_label }}">Name (optional):</label>
+                            {{ form.name| add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.phone_number.errors }}
+                            <label for="{{ form.phone_number.id_for_label }}">Phone Number (optional):</label>
+                            {{ form.phone_number | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.errors }}
+                            <label for="{{ form.email.id_for_label }}">Your email address (optional):</label>
+                            {{ form.email | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.affiliation.errors }}
+                            <label for="{{ form.affiliation.id_for_label }}">Your Affiliation to UCLA
+                                (required): </label>
+                            {{ form.affiliation | add_class:"form-control" }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.request_body.errors }}
+                            <label for="{{ form.request_body.id_for_label }}">Message (required):</label>
+                            {{ form.request_body  | add_class:"form-control" }}
+                        </div>
+
+
+                        <script src='https://www.google.com/recaptcha/api.js'></script>
+
+                        <div class="g-recaptcha" data-sitekey="6LeOlk8UAAAAADLWEtqcYVrALH4b0LMIUf2ogcW0"></div>
+                        <p></p>
+                        <input type="submit" value="Submit Feedback" class=" form-control btn btn-success">
+
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

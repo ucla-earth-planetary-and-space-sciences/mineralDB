@@ -18,8 +18,8 @@
     - virtualenvwrapper
     - mariadb-server
     - supervisor
-    - libjpeg8-dev
-    - libpq-dev
+#    - libjpeg8-dev
+#    - libpq-dev
     - default-libmysqlclient-dev
     - python3-pymysql
     - build-essential

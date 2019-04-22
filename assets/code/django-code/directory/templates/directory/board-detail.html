@@ -1,0 +1,64 @@
+{#{% extends "directory/base-detail.html" %}#}
+{##}
+{#{% block Main_Web_Header_Title %} {{block.super}} | Department Directory - Board Members | {{object_detail.first_name}} {{object_detail.last_name}} {% endblock%}#}
+{##}
+{#{% block breadcrumb %}#}
+{#    {{block.super}}#}
+{#    <li><a href="/people/board/">EPSS Board Of Advisors</a></li>#}
+{#    <li>{{object_detail.first_name}} {{object_detail.last_name}}</li>#}
+
+{#{% endblock%}#}
+
+{% extends "base.html" %}
+{%  load staticfiles %}
+{% block extra_header %}
+
+    <link rel="stylesheet" href="{% static "/main/css/bootstrap/directory.css" %}" type="text/css" />
+
+{% endblock %}
+
+{% block content %}
+<div id="directory" class="content-wrapper">
+    <div class="page-header">
+        <h1>
+            {{object_detail.first_name}}
+            {% if object_detail.middle_name %}{{ object.detail.middle_name }}{% endif %}
+            {{object_detail.last_name}}
+            {% if object_detail.suffix %}{{ object_detail.suffix }}{% endif %}
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
+
+            <div class=" ">
+
+                {% if object_detail.profile_image %}
+                <img class="img-responsive" src="{{object_detail.profile_image.url}}" alt="headshot of {{ object_detail.first_name }} {{object_detail.last_name }}"/>
+            {% else %}
+                <img class="img-responsive" src="https://epss.ucla.edu/media/images/profile_pictures/default.jpg" alt="default profile image placeholder"/>
+            {% endif%}
+
+            </div>
+        </div>
+
+        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12 text-left">
+            <h4 class="no-line">{{object_detail.official_title}}, {{ object_detail.organization }}</h4>
+
+            <p>{{ object_detail.bio }}</p>
+
+
+
+
+
+        </div>
+
+        </div>
+<div class="row">
+    <div class="col-lg-9"></div>
+    <div class="col-lg-3">
+        <a class="btn btn-primary" href="/people/board">Return to board of Advisors</a>
+    </div>
+</div>
+
+    </div>
+{% endblock %}

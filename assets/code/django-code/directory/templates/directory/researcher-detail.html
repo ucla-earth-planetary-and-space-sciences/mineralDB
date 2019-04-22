@@ -1,0 +1,9 @@
+{% extends "directory/base-detail.html" %}
+
+{% block Main_Web_Header_Title %} {{block.super}} | Department Directory - Researchers | {{object_detail.first_name}} {{object_detail.last_name}} {% endblock%}
+
+{% block breadcrumb %}
+    {{block.super}} 
+    <li><a href="/people/researchers/">Department Directory - Researchers</a></li>
+    <li>{{object_detail.first_name}} {{object_detail.last_name}}</li>
+{% endblock%}

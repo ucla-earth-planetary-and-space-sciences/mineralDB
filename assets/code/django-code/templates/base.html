@@ -1,0 +1,401 @@
+{% load meta %}
+<!DOCTYPE HTML>
+<html lang="en">
+{% load staticfiles %}
+<head{% meta_namespaces %}>
+
+    {% include "meta/meta.html" %}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="btb1TmfWEzOd1-EgD_LnPHGhzUCB96QSqdA3xXRMvZw"/>
+    <meta name="description"
+          content="In the Department of Earth, Planetary, and Space Sciences, we seek to understand the Earth and the planets. Our students, researchers, and faculty tackle a wide range of problems, from the Sun to the most distant planets, and from the center of the Earth to the tenuous ionized gases of the solar wind. We probe the interior of the Earth using seismic data, laboratory measurements, and computer modeling. We study both the ancient tectonics of the Earth and its ongoing activity. We explore Earth's upper atmosphere using spacecraft to measure magnetic fields and plasmas. Moving outward from Earth, we study other planets, their interiors, surfaces, atmospheres, and particle and field environments.">
+    <meta name="google-site-verification" content="j27BwpP7LJJXmRgM0ZqFlHeroKA4yEHA4ezpDpp5axM"/>
+
+    <title>{% block Main_Web_Header_Title %}UCLA - Earth, Planetary, and Space Sciences {% endblock %}</title>
+
+    <link rel="icon" href="{% static  "/main/images/favicon.ico" %}"/>
+    <link rel="stylesheet" href="{% static "main/fonts/fonts.css" %}"/>
+    <link rel="stylesheet" href="{% static "main/css/bootstrap/main.css" %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111990925-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-111990925-1');
+    </script>
+
+    {% block extra_header %}{% endblock %}
+
+
+</head>
+
+<body>
+{#{% load solo_tags %}#}
+{#{% get_solo 'main.StaticLinks' as static_links %}#}
+
+<header>
+    <div class="main-breadcrumb hidden-xs">
+        <div class="container">
+            <ol>
+                <li><a href="//ucla.edu">UCLA Home</a></li>
+                <li><a href="//college.ucla.edu/">College</a></li>
+                <li><a href="//www.physicalsciences.ucla.edu/">Physical Sciences</a></li>
+                <li>Earth, Planetary, and Space Sciences</li>
+            </ol>
+        </div>
+    </div>
+    <nav class="navbar navbar-default navbar-fixed">
+        <div class="container">
+            <div class="navbar-header">
+
+                <a href="/"><img src="{% static "/main/images/banners/ucla-transparent.png" %}" alt='UCLA logo'/></a>
+
+                <h1 class="college"><a href="/">Earth, Planetary, and Space Sciences</a></h1>
+                <hr>
+                <h1 class="mission-statement">Understanding and protecting our home in the universe</h1>
+
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div><!-- .navbar-header -->
+            <div class="collapse navbar-collapse" id="navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">People <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Directory</li>
+                            <li><a href="/people/faculty/">Faculty</a></li>
+                            <li><a href="/people/researchers/">Researchers</a></li>
+                            <li><a href="/people/postdocs/">Postdocs</a></li>
+                            <li><a href="/people/students/">Students</a></li>
+                            <li><a href="/people/staff/">Staff</a></li>
+                            <li><a href="/people/board/">EPSS Board of Advisors</a></li>
+                            <li class="dropdown-header">Alumni</li>
+                            <li><a href="/alumni/">Alumni information</a></li>
+                            <li><a href="/giving/">Giving Back to EPSS</a></li>
+                            <li class="dropdown-header">Awards</li>
+                            <li><a href="/faculty-awards/">Faculty Awards</a></li>
+                            <li><a href="/grad-awards/">Graduate Student Awards</a></li>
+                        </ul>
+                    </li>
+                    <li class="vertical-spacer"><span></span></li>
+
+
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Academics<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            {% load menu_items %}
+                            {% get_class_links as class_links %}
+                            {%  get_ccle_links as ccle_links %}
+                            <li class="dropdown-header">Academics</li>
+                            <li><a target="_blank" rel="noopener" href="{{ class_links }}">
+                                Schedule of Classes</a>
+                            </li>
+                            <li><a href="{{ ccle_links }}">Course Websites</a></li>
+
+                            <li><a target="_blank" rel="noopener"
+                                   href="https://www.registrar.ucla.edu/Academics/Course-Descriptions/Course-Details?SA=EPS+SCI&funsel=3">
+                                Course Catalog</a>
+
+                            </li>
+                            <li class="dropdown-header">Graduate</li>
+                            <li><a href="/graduate/">About</a></li>
+                            <li><a href="/graduate/admissions/">Admissions</a></li>
+                            <li><a href="/graduate/degree-information/">Degree Information</a></li>
+                            <li class="dropdown-header">Undergraduate</li>
+                            <li><a href="/undergraduate/">About</a></li>
+                            <li><a href="/undergraduate/admissions/">Admissions</a></li>
+                            <li><a href="/undergraduate/degree-information/">Degree Information</a></li>
+                            <li class="dropdown-header">Student Organizations</li>
+                            <li><a target="_blank" rel="noopener" href="http://www2.ess.ucla.edu/~essso">EPSSSO</a></li>
+                            <li><a target="_blank" rel="noopener" href="http://www.bruingeologicalsurvey.com/">
+                                Bruin Geological Survey
+                            </a></li>
+                        </ul>
+                    </li>
+                    <li class="vertical-spacer"><span></span></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Research<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Research Areas</li>
+                            {% load research_areas_tags %}
+                            {% get_research_areas_list as research_areas_list %}
+                            {% if research_areas_list %}
+                                {% for link in research_areas_list %}
+                                    <li><a href="{% url 'research-area-detail' link.slug %}">{{ link.name }}</a></li>
+                                {% endfor %}
+                            {% endif %}
+                            <li><a href="/research-areas/">View All</a></li>
+
+                            <li class="dropdown-header">Research Groups</li>
+
+                            <li><a target="_blank" rel="noopener" href="http://atripati.bol.ucla.edu/index.html">Climate
+                                & Carbon Cycle
+                                Group</a></li>
+                            <li><a rel='noopener' target="_blank" href="http://sims.ess.ucla.edu/eyoung/">Cosmochemistry
+                                &
+                                Geochemistry</a></li>
+                            <li><a target="_blank" rel="noopener" href="http://ptx.ess.ucla.edu/">Experimental Petrology
+                                and
+                                Geochemistry (PTX)</a></li>
+                            <li><a target="_blank" rel="noopener" href="http://esp.igpp.ucla.edu/">Experimental Space
+                                Physics Group
+                                (ESP)</a></li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="http://www.igpp.ucla.edu/minphys/Kavner_Mineral_Physics_UCLA/Kavner_Lab_Home.html">Mineral
+                                Physics</a></li>
+                            <li><a target="_blank" rel="noopener" href="http://mel.ess.ucla.edu/jlm/research/NEAs/">Radar
+                                Astronomy
+                                Group</a></li>
+                            <li><a target="_blank" rel="noopener" href="http://spinlab.ess.ucla.edu/">Spin Lab</a></li>
+
+                            <li class="dropdown-header">Facilities</li>
+
+                            {#                            <li><a href="/demos" target="_blank">Educational Demonstrations</a></li>#}
+
+                            <li><a target="_blank" href="http://e-probe.epss.ucla.edu">Electron Microprobe Lab</a></li>
+                            <li><a target="_blank" href="http://meteorites.ucla.edu/">Meteorite Collection</a></li>
+                            <li><a target="_blank" href="http://megasims.ess.ucla.edu/index.php">MegaSIMS</a></li>
+                            <li><a target="_blank" href="http://sims.ess.ucla.edu/">SIMS</a></li>
+
+                        </ul>
+                    </li>
+                    {% load events_calendar_tags %}
+                    <li class="vertical-spacer"><span></span></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">News/Events<span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/news/">News &amp; Announcements</a></li>
+                            {% get_special_events as special_events %}
+                        {% get_current_quarter as current_quarter %}
+                            {% if special_events %}
+                                <li class="dropdown-header">Special Events</li>
+                                {% for link in special_events %}
+                                    <li><a href="/seminars/{{ link.slug }}/{{ current_quarter.slug }}">{{ link.title }}</a></li>
+                                {% endfor %}
+                                <li class="divider"></li>
+                            {% endif %}
+                            <li class="dropdown-header">Seminars</li>
+                            {#                                {% load events_calendar_tags %}#}
+                            {#                            {% get_events_calendar_list as events_calendar_list %}#}
+                            {#                            {% if events_calendar_list %}#}
+                            {#                                {% for link in events_calendar_list %}#}
+                            {#                                <li><a href="/seminars/current/{{ link.slug }}">{{ link.title }}</a></li>#}
+                            {#                                {% endfor %}#}
+                            {#                            {% endif %}#}
+
+
+                            {% get_events_calendar_list as events_calendar_list %}
+
+
+                            {% if events_calendar_list %}
+                                {% for link in events_calendar_list %}
+                                    <li><a href="/seminars/{{ link.slug }}/{{ current_quarter.slug }}">{{ link.title }}</a>
+                                    </li>
+                                {% endfor %}
+                            {% endif %}
+
+                            <li class="divider"></li>
+
+                            <li><a href="/seminar-calendar/">Seminar Calendar</a></li>
+                            <li><a href="/seminars/">View all Seminars</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="vertical-spacer"><span></span></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Outreach <span
+                                class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/outreach/mission/">Outreach Mission</a></li>
+                            <li><a href="/outreach/events/">On-campus outreach events</a></li>
+                            <li><a href="/outreach/resources">Demos and collections</a></li>
+                            <li><a href="/outreach/request/">Request outreach visit</a></li>
+                        </ul>
+
+                    </li>
+
+                    <li class="vertical-spacer"><span></span></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">About<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/about/">Greetings from the Chair</a></li>
+                            <li><a target="_blank" rel="noopener"
+                                   href="{% static "/main/documents/PDFs/about_ucla_epss.pdf" %}">EPSS at a
+                                Glance <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a>
+                            </li>
+                            <li><a href="/about/newsletters/">Department Newsletters</a></li>
+                            <li><a href="/people/board/">EPSS Board of Advisors</a></li>
+                            <li><a href="/about/contact/">Contact Information</a></li>
+                            <li><a href="/directions/">Directions</a></li>
+                            <li><a href="/feedback/">Feedback Form</a></li>
+
+                            <li class="dropdown-header">Resources</li>
+                           <!--  <li><a href="/resources/facilities-labs/">Lab/Facilities</a></li> -->  
+                            <li><a href='https://sites.epss.ucla.edu/helpdesk'>IT Helpdesk </a></li>
+                            <li><a href="https://guides.library.ucla.edu/epss">Library</a></li>
+                            {#                            <li><a href="/teaching-research-collections/">Teaching and Research Collections</a></li>#}
+
+                            <li><a href="/resources/emergency/">Emergency/Safety</a></li>
+                            <li><a href="/resources/field-trips/">Field Trips</a></li>
+                            <li><a href="/resources/forms/">Forms</a></li>
+
+                        </ul>
+                    </li>
+
+                    <li class="vertical-spacer"><span></span></li>
+                    <li>
+                        <a href="/giving/">Giving</a>
+                    </li>
+                </ul>
+            </div><!-- navbar-collapse -->
+        </div>
+    </nav>
+</header>
+
+<aside class="container">
+
+    <ul class="breadcrumb">
+        {% block breadcrumb %}
+            <li><a href="https://ucla.edu">UCLA Home</a></li>
+            <li><a href="/">Department of Earth, Planetary, and Space Sciences</a></li>
+        {% endblock %}
+    </ul>
+
+</aside>
+
+<section class="container">
+    {% autoescape off %}
+        {% block content %}
+            <div class="news_and_announcements">
+                <h5>News and Announcements</h5>
+                {#                {% block news_and_announcements %}  {% endblock %}#}
+            </div><!-- /#new_and_announcements-->
+        {% endblock %}
+    {% endautoescape %}
+</section><!-- /#content-->
+
+<footer>
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <h4>Resources</h4>
+                <p>
+                    <a href="/resources/facilities-labs/">Access Lab/Facilities</a><br>
+                    <a href="/resources/emergency/">Emergency/Safety</a><br>
+                    <a href="/resources/links/">External Links</a><br>
+                    <a href="/resources/field-trips/">Field Trips</a><br>
+                    <a href="/resources/forms/">Forms</a><br>
+                </p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <h4>Directory</h4>
+                <p>
+                    <a href="/people/faculty/">Faculty</a><br>
+                    <a href="/people/researchers/">Researchers</a><br>
+                    <a href="/people/postdocs/">Postdocs</a><br>
+                    <a href="/people/students/">Students</a><br>
+                    <a href="/people/staff/">Staff</a><br>
+                </p>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <h4>Map, Directions, & Contact</h4>
+                <p>
+                    <a href="/directions/">Directions</a><br>
+                    <a href="https://www.ucla.edu/maps-directions-parking/">Campus Map</a><br>
+                    <a href="/about/contact/">Contact</a><br>
+                </p>
+            </div>
+            <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                <h4>Social</h4>
+                <p>
+
+                    <a aria-label="facebook" target="_blank" rel="noopener" href="//facebook.com/uclaepss"><i
+                            class="fa fa-facebook fa-2x"
+                            aria-hidden="true"></i></a>
+                    <a aria-label="twitter" target="_blank" rel="noopener" href="//twitter.com/uclaepss"><i
+                            class="fa fa-twitter fa-2x"
+                            aria-hidden="true"></i></a>
+                    <a aria-label="instagram" target="_blank" rel="noopener" href="//instagram.com/uclaepss"><i
+                            class="fa fa-instagram fa-2x"
+
+                            aria-hidden="true"></i></a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <ol>
+                    <li><a href="//ucla.edu">UCLA Home</a></li>
+                    <li><a href="//college.ucla.edu/">College</a></li>
+                    <li><a href="//www.physicalsciences.ucla.edu/">Physical Sciences</a></li>
+                    <li>Earth, Planetary, and Space Sciences</li>
+                </ol>
+                <hr>
+                <ol class="address">
+                    <li>Earth, Planetary, and Space Sciences</li>
+                    <li>University of California, Los Angeles</li>
+                    <li>595 Charles Young Drive East</li>
+                    <li>Box 951567</li>
+                    <li>Los Angeles, CA 90095-1567</li>
+                    <li>(310) 825-3880</li>
+                </ol>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <p>
+
+                    <a href="https://www.universityofcalifornia.edu/">&copy;&nbsp;University of
+                        California&nbsp;{% now "Y" %} </a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
+
+                        href="https://www.ucla.edu/terms-of-use/">Terms of Use /
+
+
+                    Privacy Policy</a><br>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% block extra_javascript %}
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="{% static "/main/js/bootstrap/transition.js" %}"></script>
+    <script src="{% static "/main/js/bootstrap/collapse.js" %}"></script>
+    <script src="{% static "/main/js/bootstrap/dropdown.js" %}"></script>
+    <script src="{% static "/main/js/bootstrap/affix.js" %}"></script>
+
+    <!-- enable dropdown menus -->
+    <script type="text/javascript">
+        $('.dropdown-toggle').dropdown();
+    </script>
+
+{% endblock %}
+
+</body>
+</html>

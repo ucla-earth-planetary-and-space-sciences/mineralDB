@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="content-wrapper">
+        <div class="page-header">
+            <h2>
+
+                {{ seminar.seminar_category.title }}
+                {{ seminar.quarter }}
+            </h2>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+<h4>
+                {% for speaker in seminar.seminarspeaker_set.all %}
+                                            {% if last %}
+                                                {% if speaker.url %}
+                                                    {{ speaker.name }} -
+                                                    {{ speaker.institute }}
+                                                {% else %}
+                                                    {{ speaker.name }} - {{ speaker.institute }} &
+                                                {% endif %}
+                                            {% else %}
+                                                {% if speaker.url %}
+                                                   {{ speaker.name }} -
+                                                    {{ speaker.institute }}
+                                                {% else %}
+                                                    {{ speaker.name }} - {{ speaker.institute }}<br>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+</h4>
+{#            <h4>{{ seminar.title }}</h4>#}
+            </div>
+            <div class="panel-body">
+            <div class="col-sm-3">
+               <p><strong> {{ seminar.date }},
+                {{ seminar.time_start }} - {{ seminar.time_end   }}</strong><br>
+                {{ seminar.location }}
+               <br>
+               <br>
+
+                   <strong>Presented By:</strong><br>
+                                        {% for speaker in seminar.seminarspeaker_set.all %}
+                                            {% if last %}
+                                                {% if speaker.url %}
+                                                    <a href="{{ speaker.url }}">{{ speaker.name }} </a> <br>
+                                                    {{ speaker.institute }}
+                                                {% else %}
+                                                    {{ speaker.name }} <br> {{ speaker.institute }} &
+                                                {% endif %}
+                                            {% else %}
+                                                {% if speaker.url %}
+                                                    <a href="{{ speaker.url }}">{{ speaker.name }} </a> <br>
+                                                    {{ speaker.institute }}
+                                                {% else %}
+                                                    {{ speaker.name }},  <br> {{ speaker.institute }}<br>
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+
+                                    </p>
+                                    <a href="{{ seminar.gcal_html_link }}" class="btn btn-primary"
+                                       style="margin-top: 10px;">See Event on Google. </a><br>
+                                    <a href="{{ seminar.seminar_category.gcal_subscription_link }}" class="btn btn-info"
+                                       style="margin-top: 10px;">Subscribe to Calendar</a>
+            </div>
+
+
+            <div class="col-sm-9">
+
+
+
+           {% if seminar.video_link %}
+            <div class="embed-responsive embed-responsive-16by9">
+                                        <iframe class="embded-responsive-item" src="https://youtube.com/embed/{{ demo.video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
+                                    </div>
+                                    <p></p>
+
+                {% endif %}
+            <h4>{{ seminar.title }}</h4>
+            {%  if seminar.description %}
+                <p>{{ seminar.description }}</p>
+                {% else %}
+                <h5>Seminar description coming soon</h5>
+            {% endif %}
+            </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{#{% extends "base.html" %}#}
+{##}
+{#{% block Main_Web_Header_Title %}#}
+{#    {{ block.super }} | Seminars - ESS {{ seminar.seminar_category.course_number }} {{ seminar.seminar_category.title }}#}
+{#    - {{ seminar.date|date:"n/j/Y" }}#}
+{#{% endblock %}#}
+{##}
+{#{% block breadcrumb %}#}
+{#    {{ block.super }} > <a href="/seminars/">Seminars</a> > <a href="/seminars/{{ quarter.slug }}/">{{ quarter }}</a> >#}
+{#    <a href="/seminars/{{ quarter.slug }}/{{ seminar.seminar_category.slug }}/">{{ seminar.seminar_category.title }}</a>#}
+{#    >#}
+{#    {{ seminar.title|truncatewords:4 }}#}
+{#{% endblock %}#}
+{##}
+{#{% block content %}#}
+{#    <div class="content-wrapper">#}
+{#        <div class="page-header">#}
+{#            <h2>#}
+{#                {{ seminar.seminar_category.course_number }} -#}
+{#                {{ seminar.seminar_category.title }}#}
+{#                ({{ seminar.seminar_category.quarter }})#}
+{#            </h2>#}
+{#        </div>#}
+{#        <div class="panel panel-primary">#}
+{#            <div class="panel-heading">#}
+{#                <h4>{{ seminar.date|date:"n/j/Y" }} - {{ seminar.title }}</h4>#}
+{#            </div>#}
+{#            <div class="panel-body">#}
+{#                <h4>Information:</h4>#}
+{#                <p>#}
+{#                    <strong>Time: </strong> {{ seminar.time_start|time:"g:i A" }} - {{ seminar.time_end|time:"g:i A" }}<br>#}
+{#                    <strong>Location: </strong>{{ seminar.location }}<br>#}
+{#                </p>#}
+{##}
+{#                {% if seminar.seminarspeaker_set.all %}#}
+{#                    <h4>Presented By:</h4>#}
+{#                    {% for speaker in seminar.seminarspeaker_set.all %}#}
+{#                        {% if speaker.url %}#}
+{#                            <p> <a href="{{ speaker.url }}">{{ speaker.name }}</a>, {{ speaker.institute }}</p>#}
+{#                        {% else %}#}
+{#                            <p>{{ speaker.name }}, {{ speaker.institute }}</p>#}
+{#                        {% endif %}#}
+{#                    {% endfor %}#}
+{#                {% endif %}#}
+{##}
+{#                {% if seminar.description %}#}
+{#                    <h4>Abstract</h4>#}
+{#                    <p>{{ seminar.description }}</p>#}
+{#                {% endif %}#}
+{##}
+{#                {% if seminar.seminarreading_set.all %}#}
+{#                    <dl>#}
+{#                        <dt>Reading</dt>#}
+{#                        {% for reading in seminar.seminarreading_set.all %}#}
+{#                            <dd><a href="{{ reading.url }}">{{ reading.title }}</a></dd>#}
+{#                        {% endfor %}#}
+{#                    </dl>#}
+{#                {% endif %}#}
+{##}
+{#           {% if seminar.video_link %}#}
+{##}
+{##}
+{#            <div class="embed-responsive embed-responsive-16by9">#}
+{#                                        <iframe class="embded-responsive-item" src="https://youtube.com/embed/{{ demo.video_link }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>#}
+{#                                    </div>#}
+{#                                    <p></p>#}
+{##}
+{#                {% endif %}#}
+{#                <p>#}
+{#                    {% if seminar.gcal_html_link %}#}
+{#                        <strong><a class='btn btn-primary' href='{{ seminar.gcal_html_link }}'> Add Event on#}
+{#                            Google Calendar </a></strong>#}
+{##}
+{#                    {% endif %}#}
+{#                    </p><p>#}
+{#                    {% if seminar.seminar_category.gcal_subscription_link %}#}
+{#                        <a class="btn btn-default" href="{{seminar.seminar_category.gcal_subscription_link}}"> Subscribe to This Calendar</a>#}
+{#                    {% endif %}#}
+{#</p>#}
+{#                <p><a class='btn btn-primary' href="{{ seminar.seminar_category.get_absolute_url }}">Return to Seminar Schedule</a></p>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#{% endblock %}#}
