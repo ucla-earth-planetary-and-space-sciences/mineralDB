@@ -9,19 +9,6 @@
 
 - name: Installing packages
   become: true
-  action: apt pkg={{item}} state=latest
-  with_items:
-    - nginx
-    - git
-    - uwsgi
-    - uwsgi-plugin-python3
-    - virtualenvwrapper
-    - mariadb-server
-    - supervisor
-#    - libjpeg8-dev
-#    - libpq-dev
-    - default-libmysqlclient-dev
-    - python3-pymysql
-    - build-essential
-    - python3-dev
-    - vim
+  apt:
+    pkg: ['nginx', 'git', 'uwsgi', 'uwsgi-plugin-python3', 'virtualenvwrapper', 'mariadb-server', 'supervisor', 'default-libmysqlclient-dev', 'python3-pymysql', 'build-essential', 'python3-dev', 'vim']
+    state: latest

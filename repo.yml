@@ -1,8 +1,4 @@
 ---
-# - name: Downloading the project
-#   become: true
-#   git: repo={{ repo }} dest=/home/{{prname}}/{{site}}/ accept_hostkey=True
-#
 # - name: Installing python packages
 #   become: true
 #   pip:
@@ -22,29 +18,6 @@
 - name: Creating deploy settings
   become: true
   template: src=templates/deploy.py dest=/home/{{prname}} owner="{{prname}}" mode=0644
-
-# - name: Collect static
-#   become: true
-#   django_manage:
-#     command: collectstatic
-#     app_path: /home/{{prname}}/{{site}}/{{site}}
-#     virtualenv: /home/{{prname}}/env
-#     pythonpath: /home/mineralDB/env/bin/python3.6
-#     settings: "{{prname}}.deploy"
-#
-# - name: Syncdb
-#   become: true
-#   django_manage:
-#     command: syncdb
-#     app_path: /home/{{prname}}/{{site}}
-#     virtualenv: /home/{{prname}}/env
-#     settings: "{{prname}}.deploy"
-#
-# - name: Migrate
-#   become: true
-#   shell: /home/{{prname}}/{{site}}/env/bin/python3 manage.py migrate --no-initial-data --settings={{prname}}.deploy
-#   args:
-#     chdir: /home/{{prname}}/
 
 - name: Creating uwsgi settings
   become: true

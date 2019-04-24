@@ -1,7 +1,7 @@
 ---
 - name: Creating default user
   become: true
-  user: name={{ prname }} password=pass shell=/bin/bash home=/home/{{prname}}
+  user: name={{ prname }} shell=/bin/bash 
 
 - name: Copying ssh keys
   become: true
