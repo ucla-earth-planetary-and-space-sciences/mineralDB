@@ -1,0 +1,29 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+
+<div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">The Mineral Collection</div>
+        <div class="card-body">
+            <h3>{{specimen.name}}</h3>
+            <ul>
+                <li>{{specimen.collection_id}}</li>
+                <li>{{specimen.origin_local}}</li>
+                <li>{{specimen.chemistry}}</li>
+                <li>{{specimen.provenance}}</li>
+                <li>{{specimen.dana_classification}}</li>
+                <li>{{specimen.external_link}}</li>
+            </ul>
+            <hr>
+            {% empty %}
+            <h3> No minerals have been added yet. Add to the collection!</h3>
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+</div>
+
+</div>
+{%endblock%}
