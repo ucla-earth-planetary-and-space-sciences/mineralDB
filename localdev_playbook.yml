@@ -1,13 +1,13 @@
 ---
 - hosts: all
-  # vars:
-  #   - dbuser: 'min_db_user'
-  #   - dbpwd: 'passwordyall'
-  #   - databae: 'mineralDB'
+  vars:
+  - dbuser: 'min_db_user'
+  - dbpwd: 'passwordyall'
+  - dbname: 'mineralDB'
 
   tasks:
     - include: packages.yml
     # - include: user.yml
-    # - include: mysql.yml
-    # - include: deploy.yml
-    # - include: nginx.yml
+    - include: mysql.yml
+    - include: deploy.yml
+    - include: nginx.yml

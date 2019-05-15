@@ -2,7 +2,7 @@
 - name: Create Database.
   become: true
   mysql_db:
-    name: '{{prname}}'
+    name: '{{dbname}}'
     login_unix_socket: /var/run/mysqld/mysqld.sock
     state: present
   tags:
@@ -13,9 +13,8 @@
   become: true
   mysql_user:
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    config_file: '/home/{{prname}}/.my.cnf'
     name: '{{dbuser}}'
     password: '{{dbpwd}}'
-    priv: '{{prname}}.*:ALL'
+    priv: '{{dbname}}.*:ALL'
     state: present
   tags: database

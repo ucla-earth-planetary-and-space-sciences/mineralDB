@@ -10,14 +10,14 @@
 - name: Installing packages
   become: true
   apt:
-    pkg: [ 'git', 'python3-pip', 'python3-dev', 'curl']
+    pkg: [ 'git', 'python3-pip', 'python3.7-dev', 'python3-pymysql', 'curl', 'virtualenv','nginx','mariadb-server']
     state: latest
 
 - name: Checking everything is up to date
   become: true
   apt:
     upgrade: true
-    
+
 - name: Rebooting if needed...
   shell: sleep 10 && /sbin/shutdown -r now 'reboot post update/upgrade'
   args:

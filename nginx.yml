@@ -1,7 +1,14 @@
 ---
 - name: Creating nginx conf
   become: true
-  template: src=templates/nginx.conf dest=/etc/nginx/sites-available/default owner="root" mode=0644
+  template: src=templates/nginx.conf dest=/etc/nginx/sites-available/mineralDB.conf owner="root" mode=0644
+
+- name: Symlink to sites-enabled...
+  become: true
+  file:
+    state: link
+    src: /etc/nginx/sites-available/mineralDB.conf
+    dest: /etc/nginx/sites-enabled/
 
 - name: Restarting nginx
   become: true
