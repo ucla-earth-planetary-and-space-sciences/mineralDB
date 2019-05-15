@@ -1,6 +1,13 @@
+#Python things
+*.pyc
+code/mustard/collection/migrations/
+code/mustard/env/
 *.log
+
 .vagrant
 .DS_Store
-/assets/code/env
-*.pyc
 
+# ansible things
+*.retry
+
+.idea/mineralDB.iml

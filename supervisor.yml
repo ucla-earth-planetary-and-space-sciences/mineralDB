@@ -1,8 +1,0 @@
----
-- name: Creating supervisord conf
-  become: true
-  template: src=templates/supervisor.conf dest=/etc/supervisor/conf.d/{{prname}}.conf owner="root" mode=0644
-
-- name: Restarting supervisord
-  become: true
-  service: name=supervisor state=restarted
