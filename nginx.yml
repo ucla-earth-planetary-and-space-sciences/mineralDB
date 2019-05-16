@@ -1,15 +1,38 @@
 ---
+
+- name: Move uwsgi_params
+  become: true
+  template:
+    src: templates/uwsgi_params
+    dest: /etc/nginx/uwsgi_params
+    owner: www-data
+    group: www-data
+
+- name: Move uwsgi.ini
+  become: true
+  template:
+    src: templates/uwsgi.ini
+    dest: /etc/nginx/uwsgi.ini
+    owner: www-data
+    group: www-data
+
 - name: Creating nginx conf
   become: true
-  template: src=templates/nginx.conf dest=/etc/nginx/sites-available/mineralDB.conf owner="root" mode=0644
+  template:
+    src: templates/nginx.conf
+    dest: /etc/nginx/sites-available/mineralDB.conf
+    owner: root
+    mode: 0644
 
 - name: Symlink to sites-enabled...
   become: true
   file:
     state: link
     src: /etc/nginx/sites-available/mineralDB.conf
-    dest: /etc/nginx/sites-enabled/
+    dest: /etc/nginx/sites-enabled/mineralDB.conf
 
 - name: Restarting nginx
   become: true
   service: name=nginx state=restarted
+
+
