@@ -1,0 +1,37 @@
+---
+- name: create /etc/uwsgi
+  become: true
+  file:
+    path: /etc/uwsgi
+    state: directory
+
+- name: create /etc/vassals
+  become: true
+  file:
+    path: /etc/uwsgi/vassals
+    state: directory
+
+- name: link .ini to /etc/uwsgi/vassals
+  become: true
+  file:
+    src: /etc/nginx/uwsgi.ini
+    dest: /etc/uwsgi/vassals/uwsgi.ini
+    state: link
+
+- name: install uwsgi
+  become: true
+  shell: pip3 install uwsgi -I
+
+- name: setup logz at /var/log/uwsgi/
+  become: true
+  file:
+    path: /var/log/uwsgi/
+    state: directory
+
+- name: create  logfile for uwsgi
+  become: true
+  file:
+    path: /var/log/uwsgi/mineralDB.log
+    state: touch
+    mode: "u=rwx,g=rwx,o=rwx"
+

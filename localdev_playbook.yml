@@ -11,3 +11,4 @@
     - include: mysql.yml
     - include: deploy.yml
     - include: nginx.yml
+    - include: activate.yml

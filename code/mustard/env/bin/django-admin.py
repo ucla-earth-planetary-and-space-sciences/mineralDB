@@ -1,4 +1,4 @@
-#!/srv/project_code/mustard/env/bin/python3.7
+#!/srv/project_code/mustard/env/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
