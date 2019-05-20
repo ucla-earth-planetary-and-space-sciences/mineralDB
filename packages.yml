@@ -10,23 +10,10 @@
 - name: Installing packages
   become: true
   apt:
-    pkg: [ 'git', 'python3-pip', 'python3-dev', 'python3-pymysql', 'curl', 'virtualenv','nginx','mariadb-server' ,'libmysqlclient-dev', 'libpcre3' , 'libpcre3-dev']
+    pkg: [ 'git', 'python3-pip', 'python3-dev', 'python3-pymysql', 'curl', 'virtualenv','nginx','mariadb-server' ,'libmysqlclient-dev', 'libpcre3' , 'libpcre3-dev',]
     state: latest
 
 - name: Checking everything is up to date
   become: true
   apt:
     upgrade: true
-#
-#- name: Rebooting if needed...
-#  shell: sleep 10 && /sbin/shutdown -r now 'reboot post update/upgrade'
-#  args:
-#    removes: /var/run/reboot-required
-#  async: 300
-#  poll: 0
-#  ignore_errors: true
-#
-#- name: Wait for system to become reachable again
-#  wait_for_connection:
-#    delay: 60
-#    timeout: 300

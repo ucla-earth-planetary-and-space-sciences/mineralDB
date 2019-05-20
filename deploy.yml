@@ -1,9 +1,0 @@
----
-
-- name: Pip Installing stuff...
-  become: true
-  pip:
-      virtualenv: '/srv/project_code/mustard/env'
-      requirements: '/srv/project_code/mustard/requirements.txt'
-      virtualenv_python: /usr/bin/python3
-      virtualenv_site_packages: yes

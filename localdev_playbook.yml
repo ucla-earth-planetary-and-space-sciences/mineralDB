@@ -7,8 +7,7 @@
 
   tasks:
     - include: packages.yml
-    # - include: user.yml
     - include: mysql.yml
-    - include: deploy.yml
+    - include: pip.yml
     - include: nginx.yml
     - include: activate.yml
