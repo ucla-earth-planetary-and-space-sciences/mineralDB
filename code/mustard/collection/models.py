@@ -1,4 +1,22 @@
 from django.db import models
+
+
+class Specimen(models.Model):
+    name = models.CharField(max_length=200)
+    collection_id = models.CharField(max_length=100, default=None, blank=True, )
+    origin_local = models.CharField(max_length=100, default=None, blank=True)
+    chemistry = models.CharField(max_length=100, default=None, blank=True)
+    provenance = models.CharField(max_length=100, default=None, blank=True)
+    dana_classification = models.CharField(max_length=30, default=None, blank=True)
+    external_link = models.CharField(max_length=100, default=None, blank=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ['collection_id']
+
+
 #replicated from http://webmineral.com/danaclass.shtml#.XNUGtKZlCT8
 # DANA_CLASS = (
 #     ('01', 'Native Elements'),
@@ -81,19 +99,3 @@ from django.db import models
 #     ('77','Tectosilicate Zeolite group'),
 #     ('78','Unclassified silicates'),
 #)
-
-class Specimen(models.Model):
-
-    name = models.CharField(max_length=200)
-    collection_id = models.CharField(max_length=100, default=None, blank=True,)
-    origin_local = models.CharField(max_length=100, default=None, blank=True)
-    chemistry = models.CharField(max_length=100, default=None, blank=True)
-    provenance = models.CharField(max_length=100, default=None, blank=True)
-    dana_classification = models.CharField(max_length=30,default=None, blank=True)
-    external_link = models.CharField(max_length=100, default=None, blank=True)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        ordering = ['collection_id']
