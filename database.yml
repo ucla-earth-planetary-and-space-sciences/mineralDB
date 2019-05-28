@@ -7,14 +7,24 @@
     role_attr_flags=CREATEDB,NOSUPERUSER
   tags: database
 
-- name: Create Database.
+# - name: Create Database.
+#   become: true
+#   mysql_db: >
+#     name={{dbuser}}
+#     owner={{dbpwd}}
+#     login_host=localhost
+#     login_user={{dbuser}}
+#     login_password={{dbpwd}}
+#   tags:
+#     - database
+#     - create
+
+- name: Create Database from file
   become: true
-  mysql_db: >
-    name={{dbuser}}
-    owner={{dbpwd}}
-    login_host=localhost
-    login_user={{dbuser}}
-    login_password={{dbpwd}}
+  mysql_db:
+    name: {{dbuser}}
+    state: import
+    target: templates/mineralDB.sql
   tags:
     - database
-    - create
+    - import

@@ -1,12 +1,17 @@
 ---
+- name: Pip  - upgrade Pip
+  become: true
+  pip:
+    name: 'pip'
+    state: latest
 
 - name: Pip - installing requirements...
   become: true
   pip:
-      virtualenv: '/srv/project_code/mustard/env'
-      requirements: '/srv/project_code/mustard/requirements.txt'
+      virtualenv: '/srv/env'
+      requirements: '/srv/code/mustard/requirements.txt'
       virtualenv_python: /usr/bin/python3
-      virtualenv_site_packages: yes
+
 
 - name: Pip  - install Uwsgi systemwide!
   become: true

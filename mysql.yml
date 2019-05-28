@@ -1,13 +1,22 @@
 ---
-- name: Create Database.
+# - name: Create Database.
+#   become: true
+#   mysql_db:
+#     name: '{{dbname}}'
+#     login_unix_socket: /var/run/mysqld/mysqld.sock
+#     state: present
+#   tags:
+#     - database
+#     - create
+
+- name: import databse from File
   become: true
   mysql_db:
+    state: import
     name: '{{dbname}}'
     login_unix_socket: /var/run/mysqld/mysqld.sock
-    state: present
-  tags:
-    - database
-    - create
+    target: /srv/code/{{dbname}}.sql
+
 
 - name: Create Database User
   become: true
