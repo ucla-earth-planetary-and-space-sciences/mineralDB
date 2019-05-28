@@ -13,7 +13,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('about/', views.about),
     path('collection/', views.collection_list ),
-    #path('collection/<pk>', views.collection_detail )
+    path('collection/<item>', views.collection_item )
 
 
 ]
