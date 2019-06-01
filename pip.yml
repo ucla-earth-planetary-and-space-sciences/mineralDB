@@ -1,5 +1,5 @@
 ---
-- name: Pip  - upgrade Pip
+- name: Pip  - upgrade pip!
   become: true
   pip:
     name: 'pip'
@@ -8,10 +8,10 @@
 - name: Pip - installing requirements...
   become: true
   pip:
-      virtualenv: '/srv/env'
+      virtualenv: '/srv/project-env'
       requirements: '/srv/code/mustard/requirements.txt'
       virtualenv_python: /usr/bin/python3
-
+     # virtualenv_site_packages: yes
 
 - name: Pip  - install Uwsgi systemwide!
   become: true
