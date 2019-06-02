@@ -8,7 +8,7 @@
 - name: Pip - installing requirements...
   become: true
   pip:
-      virtualenv: '/srv/project-env'
+      virtualenv: '/srv/project_env'
       requirements: '/srv/code/mustard/requirements.txt'
       virtualenv_python: /usr/bin/python3
      # virtualenv_site_packages: yes
