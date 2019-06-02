@@ -116,7 +116,7 @@ CREATE TABLE `auth_user` (
   `date_joined` datetime(6) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -125,7 +125,6 @@ CREATE TABLE `auth_user` (
 
 LOCK TABLES `auth_user` WRITE;
 /*!40000 ALTER TABLE `auth_user` DISABLE KEYS */;
-INSERT INTO `auth_user` VALUES (1,'pbkdf2_sha256$150000$M7M47LCFqUcH$e4S/Nqh7C5L4BOHURi3DAL+8pQ0npfYW7T6o6QBxRyc=',NULL,1,'epssadmin','','','',1,1,'2019-05-28 23:15:29.101729');
 /*!40000 ALTER TABLE `auth_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +294,7 @@ CREATE TABLE `django_migrations` (
 
 LOCK TABLES `django_migrations` WRITE;
 /*!40000 ALTER TABLE `django_migrations` DISABLE KEYS */;
-INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2019-05-28 22:56:49.372721'),(2,'auth','0001_initial','2019-05-28 22:56:49.780556'),(3,'admin','0001_initial','2019-05-28 22:56:51.451208'),(4,'admin','0002_logentry_remove_auto_add','2019-05-28 22:56:51.798581'),(5,'admin','0003_logentry_add_action_flag_choices','2019-05-28 22:56:51.807126'),(6,'contenttypes','0002_remove_content_type_name','2019-05-28 22:56:52.014828'),(7,'auth','0002_alter_permission_name_max_length','2019-05-28 22:56:52.181629'),(8,'auth','0003_alter_user_email_max_length','2019-05-28 22:56:52.351214'),(9,'auth','0004_alter_user_username_opts','2019-05-28 22:56:52.365335'),(10,'auth','0005_alter_user_last_login_null','2019-05-28 22:56:52.457298'),(11,'auth','0006_require_contenttypes_0002','2019-05-28 22:56:52.466671'),(12,'auth','0007_alter_validators_add_error_messages','2019-05-28 22:56:52.480634'),(13,'auth','0008_alter_user_username_max_length','2019-05-28 22:56:52.643728'),(14,'auth','0009_alter_user_last_name_max_length','2019-05-28 22:56:52.808784'),(15,'auth','0010_alter_group_name_max_length','2019-05-28 22:56:52.979613'),(16,'auth','0011_update_proxy_permissions','2019-05-28 22:56:52.993720'),(17,'collection','0001_initial','2019-05-28 22:56:53.059874'),(18,'sessions','0001_initial','2019-05-28 22:56:53.130294');
+INSERT INTO `django_migrations` VALUES (1,'contenttypes','0001_initial','2019-06-02 00:47:41.870266'),(2,'auth','0001_initial','2019-06-02 00:47:42.333746'),(3,'admin','0001_initial','2019-06-02 00:47:44.186418'),(4,'admin','0002_logentry_remove_auto_add','2019-06-02 00:47:44.572096'),(5,'admin','0003_logentry_add_action_flag_choices','2019-06-02 00:47:44.582476'),(6,'contenttypes','0002_remove_content_type_name','2019-06-02 00:47:44.819474'),(7,'auth','0002_alter_permission_name_max_length','2019-06-02 00:47:45.002554'),(8,'auth','0003_alter_user_email_max_length','2019-06-02 00:47:45.190366'),(9,'auth','0004_alter_user_username_opts','2019-06-02 00:47:45.209268'),(10,'auth','0005_alter_user_last_login_null','2019-06-02 00:47:45.318928'),(11,'auth','0006_require_contenttypes_0002','2019-06-02 00:47:45.328405'),(12,'auth','0007_alter_validators_add_error_messages','2019-06-02 00:47:45.346178'),(13,'auth','0008_alter_user_username_max_length','2019-06-02 00:47:45.524299'),(14,'auth','0009_alter_user_last_name_max_length','2019-06-02 00:47:45.712686'),(15,'auth','0010_alter_group_name_max_length','2019-06-02 00:47:45.917698'),(16,'auth','0011_update_proxy_permissions','2019-06-02 00:47:45.938081'),(17,'collection','0001_initial','2019-06-02 00:47:46.013541'),(18,'sessions','0001_initial','2019-06-02 00:47:46.086033');
 /*!40000 ALTER TABLE `django_migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,4 +332,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-05-28 23:16:52
+-- Dump completed on 2019-06-02  0:50:44
