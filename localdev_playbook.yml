@@ -1,9 +1,9 @@
 ---
 - hosts: all
   vars:
-  - dbuser: 'min_db_user'
-  - dbpwd: 'passwordyall'
-  - dbname: 'mineralDB'
+    - dbuser: 'min_db_user'
+    - dbpwd: 'passwordyall'
+    - dbname: 'mineralDB'
 
   tasks:
     - include: packages.yml

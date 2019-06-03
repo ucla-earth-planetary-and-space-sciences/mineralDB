@@ -1,0 +1,4 @@
+sudo mysqldump -u min_db_user --password='passwordyall' mineralDB > /srv/mineralDB.sql
+
+mv ~/mineralDB.sql  /srv/code
+

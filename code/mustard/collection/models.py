@@ -16,8 +16,7 @@ class Specimen(models.Model):
     class Meta:
         ordering = ['collection_id']
 
-
-#replicated from http://webmineral.com/danaclass.shtml#.XNUGtKZlCT8
+# replicated from http://webmineral.com/danaclass.shtml#.XNUGtKZlCT8
 # DANA_CLASS = (
 #     ('01', 'Native Elements'),
 #     ('02', 'Sulfides - Including Selenides and Tellurides'),
@@ -98,4 +97,4 @@ class Specimen(models.Model):
 #     ('76','Tectosilicate Al-Si Framework'),
 #     ('77','Tectosilicate Zeolite group'),
 #     ('78','Unclassified silicates'),
-#)
+# )
