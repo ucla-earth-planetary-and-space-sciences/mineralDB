@@ -1,21 +1,21 @@
 ---
-- name: Create Database User
-  become: true
-  mysql_db_user: >
-    user={{dbuser}}
-    password={{dbpwd}}
-    role_attr_flags=CREATEDB,NOSUPERUSER
-  tags: database
-
 - name: Create Database from file
   become: true
   mysql_db:
-    name: {{dbuser}}
     state: import
-    target: templates/mineralDB.sql
-  tags:
-    - database
-- import
+    name: '{{dbname}}'
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    target: /srv/code/{{dbname}}.sql
+
+- name: Create Database User
+  become: true
+  mysql_user:
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    name: '{{dbuser}}'
+    password: '{{dbpwd}}'
+    priv: '{{dbname}}.*:ALL'
+    state: present
+
 
 #- name: Create Database.
 #  become: true
