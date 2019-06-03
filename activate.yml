@@ -32,8 +32,32 @@
     state: touch
     mode: "u=rwx,g=rwx,o=rwx"
 
-- name: start uwsgi process
+
+- name: setup uwsgi service to launch at startup.
   become: true
-  shell: /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi-emperor.log
+  template:
+    src: templates/uwsgi.service
+    owner: root
+    group: root
+    dest: /etc/systemd/system/uwsgi.service
+    mode: 0777
+
+- name: enable uwsgi service
+  become: true
+  service:
+    name: uwsgi
+    enabled: yes
+
+- name: start uwsgi service
+  become: true
+  service:
+    name: uwsgi
+    daemon_reload: true
+    state: started
+
+
+#- name: start uwsgi process
+#  become: true
+#  shell: /usr/local/bin/uwsgi --emperor /etc/uwsgi/vassals --uid www-data --gid www-data --daemonize /var/log/uwsgi-emperor.log
 
 
