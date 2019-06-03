@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.synced_folder "code/", "/srv/code/"
 
-  config.vm.provision "ansible" do |ansible|
+  config.vm.provision "ansible_local" do |ansible|
     ansible.compatibility_mode = '2.0'
     ansible.playbook = "localdev_playbook.yml"
     ansible.host_vars = {

@@ -11,3 +11,4 @@ code/mustard/env/
 *.retry
 
 .idea/mineralDB.iml
+/code/mustard/.pytest_cache/

@@ -15,3 +15,4 @@ class SpecimenTests(TestCase):
         test_model_instance = self.create_specimen()
         self.assertTrue(isinstance(test_model_instance, Specimen))
         self.assertEqual(test_model_instance.__str__(), test_model_instance.name)
+
